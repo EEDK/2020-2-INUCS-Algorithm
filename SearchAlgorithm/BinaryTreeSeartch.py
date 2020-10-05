@@ -1,13 +1,9 @@
-import SearchAlgorithm.Search
-import SortAlgorithm.Tool
-import random
-import time
-
 class node:
     def __init__(self, key=None, left=None, right=None):
         self.key = key
         self.left = left
         self.right = right
+
 
 class Dict:
     x = p = node
@@ -36,10 +32,3 @@ class Dict:
             p.left = x
         else:
             p.right = x
-
-
-if __name__ == '__main__':
-    a = Dict()
-    a.insert(2)
-
-

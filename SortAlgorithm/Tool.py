@@ -78,3 +78,19 @@ def createReverseList(n):
 
     return a
 
+def chopingRun(a, n):
+    newArray = []
+    run = []
+
+    for i in range(n-1):
+        run.append(a[i])
+
+        if a[i] > a[i+1]:
+            newArray.append(run)
+            run = []
+
+    run.append(a[n-1])
+    newArray.append(run)
+
+    return newArray
+
