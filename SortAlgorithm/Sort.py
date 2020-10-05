@@ -113,25 +113,3 @@ def cocktailSort(a, n):
                 swapped = True
         start = start + 1
 
-def mergeSort(a, l, r):
-    if r > l:
-        m = int((r+l) / 2)
-        mergeSort(a, l, m)
-        mergeSort(a, m + 1, r)
-
-        for i in range(m+1, l, -1):
-            b[i-1] = a[i-1]
-        i -= 1
-
-        for j in range(m, r):
-            b[r+m-j] = a[j+1]
-        j += 1
-
-        for k in range(l, r+1):
-            if b[i] < b[j]:
-                a[k] = b[i]
-                i += 1
-            else:
-                a[k] = b[j]
-                j -= 1
-

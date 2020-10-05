@@ -1,45 +1,50 @@
-import SearchAlgorithm.Search
 import SortAlgorithm.Tool
 import random
 import time
 
-class node:
-    def __init__(self, key=None, left=None, right=None):
-        self.key = key
-        self.left = left
-        self.right = right
 
-class Dict:
-    x = p = node
-    z = node(key=0, left=0, right=0)
-    z.left = z
-    z.right = z
-    head = node(key=0, left=0, right=z)
+def merge(a, l, m, r):
+    i = l
+    j = m + 1
+    k = l
 
-    def insert(self, v):
-        p = self.head
-        x = self.head.right
-
-        while x != self.z:
-            p = x
-            if x.key == v:
-                return
-
-            if x.key > v:
-                x = x.left
-            else:
-                x = x.right
-
-        x = node(key=v, left=self.z, right=self.z)
-
-        if p.key > v:
-            p.left = x
+    while i <= m and j <= r:
+        if (a[i] < a[j]):
+            b[k] = a[i]
+            k = k + 1
+            i = i + 1
         else:
-            p.right = x
+            b[k] = a[j]
+            k += 1
+            j += 1
 
+    if i > m:
+        for p in range(j, r + 1, 1):
+            b[k] = a[p]
+            k += 1
+    else:
+        for p in range(i, m + 1, 1):
+            b[k] = a[p]
+            k += 1
+
+    for p in range(l, r + 1, 1):
+        a[p] = b[p]
+
+def mergeSort(a, l, r):
+    if r > l:
+        m = int((r+l) / 2)
+        mergeSort(a, l, m)
+        mergeSort(a, m + 1, r)
+        merge(a, l, m, r)
+
+def naturalMergeSort(a):
+    print(a)
 
 if __name__ == '__main__':
-    a = Dict()
-    a.insert(2)
+    a = [6, 7, 8, 3, 4, 1, 5, 9, 10, 2]
+    #a = SortAlgorithm.Tool.chopingRun(a, 10)
+    b = a.copy()
 
+    mergeSort(a, 0, 9)
+    print(a)
 
