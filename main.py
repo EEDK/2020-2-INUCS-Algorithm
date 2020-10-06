@@ -48,11 +48,10 @@ def naturalMergeSort(a):
     while length > 1:
         l = 0
         for i in range(1, length, 2):
-            r = l + len(run[i-1]) + len(run[i])
-            m = int((r+l) / 2)
+            m = l + len(run[i-1]) - 1
+            r = m + len(run[i])
             merge(a, l, m, r)
-            l = r
-
+            l = r + 1
         run = SortAlgorithm.Tool.chopingRun(a, n)
         length = len(run)
 
@@ -66,3 +65,4 @@ if __name__ == '__main__':
     a = createRandomList(n)
     b = a.copy()
     naturalMergeSort(a)
+    print(a)
