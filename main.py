@@ -1,7 +1,12 @@
 import SortAlgorithm.Tool
 import random
-import time
 
+def createRandomList(n):
+    a = []
+    for i in range(n):
+        a.append(random.randint(1, n-1))
+
+    return a
 
 def merge(a, l, m, r):
     i = l
@@ -9,10 +14,10 @@ def merge(a, l, m, r):
     k = l
 
     while i <= m and j <= r:
-        if (a[i] < a[j]):
+        if a[i] < a[j]:
             b[k] = a[i]
-            k = k + 1
-            i = i + 1
+            k += 1
+            i += 1
         else:
             b[k] = a[j]
             k += 1
@@ -38,13 +43,26 @@ def mergeSort(a, l, r):
         merge(a, l, m, r)
 
 def naturalMergeSort(a):
-    print(a)
+    run = SortAlgorithm.Tool.chopingRun(a, n)
+    length = len(run)
+    while length > 1:
+        l = 0
+        for i in range(1, length, 2):
+            r = l + len(run[i-1]) + len(run[i])
+            m = int((r+l) / 2)
+            merge(a, l, m, r)
+            l = r
+
+        run = SortAlgorithm.Tool.chopingRun(a, n)
+        length = len(run)
+
 
 if __name__ == '__main__':
-    a = [6, 7, 8, 3, 4, 1, 5, 9, 10, 2]
-    #a = SortAlgorithm.Tool.chopingRun(a, 10)
+    n = int(input('생성할 배열 개수 : '))
+    a = createRandomList(n)
     b = a.copy()
+    mergeSort(a, 0, n - 1)
 
-    mergeSort(a, 0, 9)
-    print(a)
-
+    a = createRandomList(n)
+    b = a.copy()
+    naturalMergeSort(a)
