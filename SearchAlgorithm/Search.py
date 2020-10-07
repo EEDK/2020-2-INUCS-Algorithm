@@ -25,3 +25,14 @@ def binarySearch(dict, searchKey, n):
             left = mid + 1
 
     return -1
+
+def binaryTreeSearch(dict, searchKey):
+    p = dict
+    if p == None:
+        return -1
+    if p.key == searchKey:
+        return p
+    elif p.key < searchKey:
+        return binaryTreeSearch(p.right, searchKey)
+    else :
+        return binaryTreeSearch(p.left, searchKey)
