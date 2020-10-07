@@ -1,5 +1,6 @@
 import SortAlgorithm.Tool
-import random
+import random, time
+from matplotlib import pyplot as plt
 
 def createRandomList(n):
     a = []
@@ -55,14 +56,23 @@ def naturalMergeSort(a):
         run = SortAlgorithm.Tool.chopingRun(a, n)
         length = len(run)
 
-
 if __name__ == '__main__':
     n = int(input('생성할 배열 개수 : '))
+    startTime = time.time()
     a = createRandomList(n)
     b = a.copy()
     mergeSort(a, 0, n - 1)
+    endMergeTime = time.time() - startTime
 
+    startTime = time.time()
     a = createRandomList(n)
     b = a.copy()
     naturalMergeSort(a)
-    print(a)
+    endNaturalMergeTime = time.time() - startTime
+
+    dataTime = [endMergeTime, endNaturalMergeTime]
+    plt.bar(range(len(dataTime)), dataTime)
+    ax = plt.subplot()
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(['Nomal', 'Natural'], rotation=30)
+    plt.show()
