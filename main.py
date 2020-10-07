@@ -56,23 +56,40 @@ def naturalMergeSort(a):
         run = SortAlgorithm.Tool.chopingRun(a, n)
         length = len(run)
 
+def tournamentSort(a, n):
+    newA = a.copy()
+    result = []
+    if n % 2 != 0:
+        newA.append(0)
+        n = n + 1
+
+    for j in range(n):
+        b = []
+        for i in range(n):
+            b.append(0)
+        for i in range(n, 2*n):
+            b.append(newA[i-n])
+
+        for i in range(2*n-1, 0, -2):
+            if b[i] > b[i-1]:
+                v = b[i]
+            else:
+                v = b[i-1]
+
+            b[i // 2] = v
+        result.append(b[0])
+        for i in range(n):
+            if newA[i] == b[0]:
+                newA[i] = 0
+                break
+
+    length = len(a)
+    for i in range(length):
+        a[i] = result[i]
+
 if __name__ == '__main__':
     n = int(input('생성할 배열 개수 : '))
     startTime = time.time()
     a = createRandomList(n)
-    b = a.copy()
-    mergeSort(a, 0, n - 1)
-    endMergeTime = time.time() - startTime
-
-    startTime = time.time()
-    a = createRandomList(n)
-    b = a.copy()
-    naturalMergeSort(a)
-    endNaturalMergeTime = time.time() - startTime
-
-    dataTime = [endMergeTime, endNaturalMergeTime]
-    plt.bar(range(len(dataTime)), dataTime)
-    ax = plt.subplot()
-    ax.set_xticks([0, 1])
-    ax.set_xticklabels(['Nomal', 'Natural'], rotation=30)
-    plt.show()
+    tournamentSort(a, n)
+    print(a)
