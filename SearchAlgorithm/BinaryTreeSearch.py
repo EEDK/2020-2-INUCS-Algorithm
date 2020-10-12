@@ -46,7 +46,7 @@ class Dict:
                 x = x.right
         return -1
 
-N = 10000
+N = int(input("만들 배열의 갯수 설정 : "))
 
 key = list(range(1, N + 1))
 s_key = list(range(1, N + 1))

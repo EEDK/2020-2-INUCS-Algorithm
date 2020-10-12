@@ -1,4 +1,5 @@
 import SortAlgorithm.Tool
+import SortAlgorithm.Sort
 import random, time
 from matplotlib import pyplot as plt
 
@@ -90,6 +91,18 @@ def tournamentSort(a, n):
 if __name__ == '__main__':
     n = int(input('생성할 배열 개수 : '))
     startTime = time.time()
+    a = SortAlgorithm.Tool.createRandomList(n)
+    SortAlgorithm.Sort.heapSort(a, n)
+    endHeapTime = time.time() - startTime
+
+    startTime = time.time()
     a = createRandomList(n)
     tournamentSort(a, n)
-    print(a)
+    endTournamentTime = time.time() - startTime
+
+    dataTime = [endHeapTime, endTournamentTime]
+    plt.bar(range(len(dataTime)), dataTime)
+    ax = plt.subplot()
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(['heap', 'tournament'], rotation = 30)
+    plt.show()
