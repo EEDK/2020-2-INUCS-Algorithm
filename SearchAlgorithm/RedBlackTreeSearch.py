@@ -1,20 +1,35 @@
+import time
+from random import *
+
 BLACK = 0
 RED = 1
 
 class node:
-    def __init__(self, color, key=None, left=None, right=None, ):
+    def __init__(self, color, key=None, left=None, right=None):
+        self.color = color
         self.key = key
         self.left = left
         self.right = right
-        self.color = color
 
 class Dict:
     x = p = q = gg = node
 
     z = node(color=BLACK, key=0, left=0, right=0)
-    z.left= z
+    z.left = z
     z.right = z
-    head = node(color=BLACK, key=0, left=0, right=0)
+    head = node(color=BLACK, key=0, left=0, right=z)
+
+    def search(self, searchKey):
+        x = self.head.right
+
+        while x != self.z:
+            if x.key == searchKey:
+                return x.key
+            if x.key > searchKey:
+                x = x.left
+            else:
+                x = x.right
+        return -1
 
     def insert(self, v):
         x = p = g = self.head
@@ -30,7 +45,7 @@ class Dict:
             else:
                 x = x.right
 
-            if x.left.color and x.right.color :
+            if x.left.color and x.right.color:
                 self.split(x, p, g, gg, v)
 
         x = node(color=RED, key=v, left=self.z, right=self.z)
@@ -42,18 +57,6 @@ class Dict:
         self.split(x, p, g, gg, v)
         self.head.right.color = BLACK
 
-    def search(self, searchKey):
-        x = self.head.right
-
-        while x != self.z:
-            if x.key == searchKey:
-                return x.key
-            if x.key > searchKey:
-                x = x.left
-            else:
-                x = x.right
-        return -1
-
     def split(self, x, p, g, gg, v):
         x.color = RED
         x.left.color = BLACK
@@ -62,11 +65,11 @@ class Dict:
         if p.color:
             g.color = RED
             if (g.key > v) != (p.key > v):
-                p = self.rotate(v , g)
+                p = self.rotate(v, g)
             x = self.rotate(v, gg)
             x.color = BLACK
 
-    def rotate(self, v , y):
+    def rotate(self, v, y):
         gc = c = node
         if y.key > v:
             c = y.left
@@ -78,7 +81,7 @@ class Dict:
             c.left = gc.right
             gc.right = c
         else:
-            bc = c.right
+            gc = c.right
             c.right = gc.left
             gc.left = c
 
@@ -87,3 +90,21 @@ class Dict:
         else:
             y.right = gc
         return gc
+
+N = int(input("만들 배열의 갯수 설정 : "))
+
+key = list(range(1, N + 1))
+shuffle(key)
+
+d = Dict()
+for i in range(N):
+    d.insert(key[i])
+
+start_time = time.time()
+s_key = randint(1, N + 1)
+result = d.search(s_key)
+if result == -1 or result != s_key:
+    print('탐색 오류')
+end_time = time.time() - start_time
+
+print('레드 블랙 트리 탐색 수행 시간(N = %d) : %0.3f'%(N, end_time))
