@@ -1,4 +1,4 @@
-import time
+import time, SearchAlgorithm.Search
 from random import *
 
 BLACK = 0

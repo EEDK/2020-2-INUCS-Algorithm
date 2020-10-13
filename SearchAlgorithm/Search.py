@@ -36,3 +36,4 @@ def binaryTreeSearch(dict, searchKey):
         return binaryTreeSearch(p.right, searchKey)
     else :
         return binaryTreeSearch(p.left, searchKey)
+
