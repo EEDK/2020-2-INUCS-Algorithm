@@ -90,6 +90,25 @@ class Dict:
         else:
             y.right = gc
         return gc
+    
+    def check(self, n):
+        for i in range(1, n):
+            x = p = self.head
+
+            while x != self.z:
+                if x.key == i:
+                    break
+                if x.key > i:
+                    p = x
+                    x = x.left
+                else:
+                    p = x
+                    x = x.right
+
+            print('key = %d , parent = %d , color = %s'%(x.key, p.key, "black" if x.color == BLACK else "red"))
+
+
+
 
 N = int(input("만들 배열의 갯수 설정 : "))
 
@@ -107,4 +126,5 @@ if result == -1 or result != s_key:
     print('탐색 오류')
 end_time = time.time() - start_time
 
+d.check(N)
 print('레드 블랙 트리 탐색 수행 시간(N = %d) : %0.3f'%(N, end_time))
