@@ -1,5 +1,6 @@
 import SearchAlgorithm.Search
-import random, time
+import time
+from random import *
 
 class node:
     def __init__(self, key=None, left=None, right=None):
@@ -35,6 +36,7 @@ class Dict:
         else:
             p.right = x
 
+    # if return value was 1 , dosen't search value
     def search(self, searchKey):
         x = self.head.right
         while x != self.z:
@@ -49,16 +51,17 @@ class Dict:
 N = int(input("만들 배열의 갯수 설정 : "))
 
 key = list(range(1, N + 1))
-s_key = list(range(1, N + 1))
-random.shuffle(key)
+shuffle(key)
+
 d = Dict()
 for i in range(N):
     d.insert(key[i])
+
 start_time = time.time()
-for i in range(N):
-    result = d.search(s_key[i])
-    if result == -1 or result != s_key[i]:
-        print('탐색 오류')
+s_key = randint(1, N + 1)
+result = d.search(s_key)
+if result == -1 or result != s_key:
+    print('탐색 오류')
 end_time = time.time() - start_time
 
 print('이진 탐색 수행 시간(N = %d) : %0.3f'%(N, end_time))
