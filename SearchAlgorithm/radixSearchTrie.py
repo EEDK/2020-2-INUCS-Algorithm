@@ -82,29 +82,39 @@ class Dict:
 
         return t
 
+    def check(self, keys):
+        length = len(keys)
+        for i in range(length):
+            v = bitskey(keys[i])
+            print(v.get(), end=' ')
+            self.checkR(self.head, v, maxb-1)
+
+    def checkR(self, h, v, d):
+        if h == 0:
+            print(' ')
+
+        if v.get() == h.key.get():
+            print()
+            return
+        if v.bits(d, 1) == 0:
+            print('left', end=' ')
+            self.checkR(h.left, v, d-1)
+        else:
+            print('right', end=' ')
+            self.checkR(h.right, v, d-1)
 
 
-import random, time
 
-N = 10000
-maxb = 14
+maxb = 5
 
-key = list(range(1, N+1))
-sKey = list(range(1, N+1))
-random.shuffle(key)
+key = [1, 19, 5, 18, 3, 26, 9]
+sKey = [1, 3, 5, 9, 18, 19, 26]
 
 d = Dict()
-for i in range(N):
+for i in range(len(key)):
     d.insert(key[i])
 
 d.head.external = True
-startTime = time.time()
-for i in range(N):
-    result = d.search(sKey[i])
-    if result.get() == -1 or result.get() != sKey[i]:
-        print('error')
+d.check(sKey)
 
-endTime = time.time() - startTime
-
-print('기수 탐색 트라이의 실행시간 (N = %d) : %0.3f' %(N, endTime))
 print('Done')
