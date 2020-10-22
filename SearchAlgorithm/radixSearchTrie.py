@@ -1,3 +1,5 @@
+maxb = 17
+
 class bitskey:
     def __init__(self, x):
         self.x = x
@@ -103,18 +105,3 @@ class Dict:
             print('right', end=' ')
             self.checkR(h.right, v, d-1)
 
-
-
-maxb = 5
-
-key = [1, 19, 5, 18, 3, 26, 9]
-sKey = [1, 3, 5, 9, 18, 19, 26]
-
-d = Dict()
-for i in range(len(key)):
-    d.insert(key[i])
-
-d.head.external = True
-d.check(sKey)
-
-print('Done')

@@ -1,3 +1,5 @@
+maxb = 17
+
 class bitskey:
     def __init__(self, x):
         self.x = x
@@ -63,7 +65,7 @@ class Dict:
         else:
             p.left = x
 
-    def check(self , keys):
+    def check(self, keys):
         length = len(keys)
         for i in range(length):
             v = bitskey(keys[i])
@@ -86,21 +88,3 @@ class Dict:
                 print('key value doesnt exist')
             else:
                 print('key = %d , parent %d' % (x.key.get(), p.key.get()))
-
-
-import random, time
-
-N = int(input('생성할 배열의 수 : '))
-maxb = 5
-
-key = [1, 19, 5, 18, 3, 26, 9]
-sKey = [1, 3, 5, 9, 18, 19, 26]
-
-d = Dict()
-for i in range(len(key)):
-    d.insert(key[i])
-print(key)
-
-d.check(sKey)
-
-print('Done')

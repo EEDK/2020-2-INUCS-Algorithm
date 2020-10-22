@@ -38,15 +38,20 @@ class Dict:
 
     # if return value was 1 , dosen't search value
     def search(self, searchKey):
-        x = self.head.right
-        while x != self.z:
-            if x.key == searchKey:
-                return x.key
-            if x.key > searchKey:
-                x = x.left
-            else:
-                x = x.right
-        return -1
+        for i in range(1, n + 1):
+            x = self.node
+            while x is not None:
+                if x.key == i:
+                    break
+                if x.key > i:
+                    p = x
+                    x = x.left.node
+                else:
+                    p = x
+                    x = x.right.node
+
+            print('key = %d , parent = %d' %(x.key, p.key))
+
 
 # N = int(input("만들 배열의 갯수 설정 : "))
 #
