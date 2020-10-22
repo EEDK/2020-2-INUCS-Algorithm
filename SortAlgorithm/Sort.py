@@ -146,3 +146,47 @@ def mergeSort(a, l, r):
         mergeSort(a, l, m)
         mergeSort(a, m + 1, r)
         merge(a, l, m, r)
+
+def naturalMergeSort(a):
+    run = SortAlgorithm.Tool.chopingRun(a, n)
+    length = len(run)
+    while length > 1:
+        l = 0
+        for i in range(1, length, 2):
+            m = l + len(run[i-1]) - 1
+            r = m + len(run[i])
+            merge(a, l, m, r)
+            l = r + 1
+        run = SortAlgorithm.Tool.chopingRun(a, n)
+        length = len(run)
+
+def tournamentSort(a, n):
+    newA = a.copy()
+    result = []
+    if n % 2 != 0:
+        newA.append(0)
+        n = n + 1
+
+    for j in range(n):
+        b = []
+        for i in range(n):
+            b.append(0)
+        for i in range(n, 2*n):
+            b.append(newA[i-n])
+
+        for i in range(2*n-1, 0, -2):
+            if b[i] > b[i-1]:
+                v = b[i]
+            else:
+                v = b[i-1]
+
+            b[i // 2] = v
+        result.append(b[0])
+        for i in range(n):
+            if newA[i] == b[0]:
+                newA[i] = 0
+                break
+
+    length = len(a)
+    for i in range(length):
+        a[i] = result[i]

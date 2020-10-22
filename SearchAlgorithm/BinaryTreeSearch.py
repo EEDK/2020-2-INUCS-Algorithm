@@ -38,30 +38,36 @@ class Dict:
 
     # if return value was 1 , dosen't search value
     def search(self, searchKey):
-        x = self.head.right
-        while x != self.z:
-            if x.key == searchKey:
-                return x.key
-            if x.key > searchKey:
-                x = x.left
-            else:
-                x = x.right
-        return -1
+        for i in range(1, n + 1):
+            x = self.node
+            while x is not None:
+                if x.key == i:
+                    break
+                if x.key > i:
+                    p = x
+                    x = x.left.node
+                else:
+                    p = x
+                    x = x.right.node
 
-N = int(input("만들 배열의 갯수 설정 : "))
+            print('key = %d , parent = %d' %(x.key, p.key))
 
-key = list(range(1, N + 1))
-shuffle(key)
 
-d = Dict()
-for i in range(N):
-    d.insert(key[i])
-
-start_time = time.time()
-s_key = randint(1, N + 1)
-result = d.search(s_key)
-if result == -1 or result != s_key:
-    print('탐색 오류')
-end_time = time.time() - start_time
-
-print('이진 탐색 수행 시간(N = %d) : %0.3f'%(N, end_time))
+# N = int(input("만들 배열의 갯수 설정 : "))
+#
+# key = list(range(1, N + 1))
+# s_key = list(range(1, N + 1))
+# shuffle(key)
+#
+# d = Dict()
+# for i in range(N):
+#     d.insert(key[i])
+#
+# start_time = time.time()
+# for i in range(N):
+#     result = d.search(s_key[i])
+#     if result == -1 or result != s_key[i]:
+#         print('탐색 오류')
+# end_time = time.time() - start_time
+#
+# print('이진 탐색 수행 시간(N = %d) : %0.3f'%(N, end_time))
