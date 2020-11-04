@@ -1,23 +1,16 @@
-def initNext(p):
-    M = len(p)
-    next[0] = -1
 
-    i = 0
-    j = -1
+def index(c):
+    if ord(c) == 32:
+        return 0
+    else:
+        return ord(c) - 64
 
-    while i < M:
-        if j != -1 and p[i] == p[j]:
-            next[i] = next[j]
-        else:
-            next[i] = j
-        while j >= 0 and p[i] != p[j]:
-            j = next[j]
+def checkCount(text):
+    length = len(text)
+    Ncount = [0] * 54
+    for i in range(length):
+        Ncount[index(text[i])] += 1
 
-        i += 1
-        j += 1
+    print(Ncount)
 
-next = [0] * 100
-pattern ='abracadabra'
-initNext(pattern)
-for i in range(1, len(pattern)):
-    print(next[i], end= ' ')
+    return Ncount
