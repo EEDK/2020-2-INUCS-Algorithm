@@ -11,14 +11,14 @@ def matrixChainMult(d, m, p, n):
                     m[i][j] = q
                     p[i][j] = k
 
-    return m
+    return m[1][n]
 
 def printMatrix(matrix):
-    col = len(matrix)
+    col = len(matrix) - 1
 
     for i in range(1, col):
         row = len(matrix[i])
-        for j in range(row):
+        for j in range(2, row):
             print(matrix[i][j], end=' ')
 
         print()
@@ -42,5 +42,9 @@ for i in range(N + 1):
     P.append(p)
 
 result = matrixChainMult(D, M, P, N)
-printMatrix(result)
-print('최소 곱셈 횟수 : ', result[1][N])
+print('최소 곱셈 횟수 : ', result)
+print('M')
+printMatrix(M)
+print()
+print('K')
+printMatrix(P)
