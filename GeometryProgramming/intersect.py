@@ -1,4 +1,5 @@
 import GeometryProgramming.geo as g
+import GeometryProgramming.ccw as ccw
 
 def ccw(p0, p1, p2):
     dx1 = p1.x - p0.x
