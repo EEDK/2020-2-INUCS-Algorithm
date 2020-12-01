@@ -69,6 +69,7 @@ def grahamScan(p, n):
 
     for i in range(4, n+1):
         while ccw(p[m], p[m-1], p[i]) >= 0:
+            print('우회전 : (%s%s%s) ' % (p[m-1].c, p[m].c, p[i].c))
             m -= 1
         m += 1
         p[i], p[m] = p[m], p[i]
