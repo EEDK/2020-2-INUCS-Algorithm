@@ -14,7 +14,7 @@ def theta(p1, p2):
     if dx < 0 :
         t = 2 - t
     elif dy < 0:
-        t = 4 +t
+        t = 4 + t
 
     return t * 90
 
@@ -27,7 +27,7 @@ def selectionSort(p, n):
                 minIndex = j
         p[minIndex], p[i] = p[i], p[minIndex]
 
-N = 12
+N = 16
 p = []
 p.append(g.point(None, None, None))
 for i in range(N):

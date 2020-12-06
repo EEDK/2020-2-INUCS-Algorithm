@@ -6,7 +6,6 @@ class node:
         self.p = g.point(max, max, '')
         self.next = None
 
-
 def comp(t):
     if t_pass == 1:
         return t.p.x
@@ -93,7 +92,7 @@ def readlist():
     p.next = z
     return h
 
-N = 8
+N = 16
 max = 1000
 cp1 = g.point(max, max, '')
 cp2 = g.point(max, max, '')

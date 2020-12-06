@@ -1,6 +1,5 @@
 import GeometryProgramming.geo as g
 
-
 def theta(p1, p2):
     dx = p2.x - p1.x
     dy = p2.y - p1.y
@@ -18,7 +17,6 @@ def theta(p1, p2):
         t = 4 +t
 
     return t * 90
-
 
 def packageWraaping(p, n):
     minIndex = 0
@@ -43,7 +41,7 @@ def packageWraaping(p, n):
         if minIndex == n:
             return m
 
-N = 12
+N = 16
 p = []
 
 for i in range(N):

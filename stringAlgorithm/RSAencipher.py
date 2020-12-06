@@ -1,3 +1,31 @@
+def encode(p):
+    m = ''
+    for i in range(len(p)):
+        a = ord(p[i])
+        if a == 32:
+            a = 64
+        a -= 64
+        if a == 0:
+            m += '00'
+        elif a < 10:
+            m += '0' + str(a)
+        else:
+            m += str(a)
+
+    return m
+
+def decode(p):
+    m = ''
+
+    for i in range(0, len(p), 2):
+        a = int(p[i:i+2]) + 64
+        if a == 64:
+            a = 32
+        m += chr(a)
+
+    return m
+
+
 def encipher(p, n, pk):
     c = ''
     i = 0
@@ -49,38 +77,12 @@ def decipher(p, n, sk):
     return c
 
 
-
-def encode(p):
-    m = ''
-    for i in range(len(p)):
-        a = ord(p[i])
-        if a == 32:
-            a = 64
-        a -= 64
-        if a == 0:
-            m += '00'
-        elif a < 10:
-            m += '0' + str(a)
-        else:
-            m += str(a)
-
-    return m
-
-def decode(p):
-    m = ''
-
-    for i in range(0, len(p), 2):
-        a = int(p[i:i+2]) + 64
-        if a == 64:
-            a = 32
-        m += chr(a)
-
-    return m
-
 plainText = 'SAVE PRIVATE RYAN '
 
 N = 3713
+# 공개키
 S = 97
+# 비밀키
 P = 37
 plainMessage = encode(plainText)
 

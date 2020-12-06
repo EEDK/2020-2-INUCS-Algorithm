@@ -1,8 +1,8 @@
-def bruteForce(p , t):
+def bruteForce(p, t, k):
     M = len(p)
     N = len(t)
 
-    i = 0
+    i = k
     j = 0
     while j < M and i < N:
         if t[i] != p[j]:
@@ -16,8 +16,18 @@ def bruteForce(p , t):
     else: return i
 
 
-text = '123456789'
-pattern = '4567'
+text = 'ababababcababababcaabbababcaab'
+pattern = 'abababca'
 
-print('나타난 pos : ', end = '')
-print(bruteForce(pattern, text))
+N = len(text)
+M = len(pattern)
+
+K = 0
+
+while True:
+    pos = bruteForce(pattern, text, K)
+    K = pos + M
+    if K < N:
+        print('나타난 pos : ', pos)
+    else:
+        break

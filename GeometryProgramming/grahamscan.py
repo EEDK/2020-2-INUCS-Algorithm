@@ -37,7 +37,6 @@ def theta(p1, p2):
 
     return t * 90
 
-
 def selectionSort(p, n):
     for i in range(1, n):
         minIndex = i
@@ -45,7 +44,6 @@ def selectionSort(p, n):
             if theta(p[1], p[j]) < theta(p[1], p[minIndex]):
                 minIndex = j
         p[minIndex], p[i] = p[i], p[minIndex]
-
 
 def grahamScan(p, n):
     minIndex = 1

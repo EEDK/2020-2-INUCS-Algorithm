@@ -20,6 +20,7 @@ def ccw(p0, p1, p2):
         return +1
     return 0
 
+# 둘다 시계 반대방향 일 경우에만 교차
 def intersect(l1, l2):
     t1 = ccw(l1.p1, l1.p2, l2.p1) * ccw(l1.p1, l1.p2, l2.p2)
     t2 = ccw(l2.p1, l2.p2, l1.p1) * ccw(l2.p1, l2.p2, l1.p2)
