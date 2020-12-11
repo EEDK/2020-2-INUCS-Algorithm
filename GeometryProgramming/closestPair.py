@@ -36,6 +36,7 @@ def check(p1, p2):
     global min, cp1, cp2
     if (p1.y != z.p.y) and (p2.y != z.p.y):
         dist = math.sqrt((p1.x-p2.x) * (p1.x-p2.x) + (p1.y-p2.y) * (p1.y-p2.y))
+        print((p1.x-p2.x) * (p1.x-p2.x) + (p1.y-p2.y) * (p1.y-p2.y), z.p.c)
         if dist < min:
             min = dist
             cp1 = p1
@@ -92,7 +93,7 @@ def readlist():
     p.next = z
     return h
 
-N = 16
+N = 8
 max = 1000
 cp1 = g.point(max, max, '')
 cp2 = g.point(max, max, '')

@@ -1,4 +1,4 @@
-maxb = 17
+maxb = 14
 
 class bitskey:
     def __init__(self, x):
@@ -88,3 +88,24 @@ class Dict:
                 print('key value doesnt exist')
             else:
                 print('key = %d , parent %d' % (x.key.get(), p.key.get()))
+
+import random, time
+
+N = int(input("만들 배열의 갯수 설정 : "))
+
+key = list(range(1, N + 1))
+s_key = list(range(1, N + 1))
+random.shuffle(key)
+
+d = Dict()
+for i in range(N):
+    d.insert(key[i])
+
+start_time = time.time()
+for i in range(N):
+    result = d.search(s_key[i])
+    if result == -1 or result != s_key[i]:
+        print('탐색 오류')
+end_time = time.time() - start_time
+
+print('이진 트리 수행 시간(N = %d) : %0.3f'%(N, end_time))

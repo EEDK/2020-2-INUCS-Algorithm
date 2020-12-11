@@ -1,5 +1,8 @@
-from stringAlgorithm.tool import index
-
+def index(c):
+    if ord(c) == 32:
+        return 0
+    else:
+        return ord(c) - 64
 class PQ:
     def __init__(self):
         self.heap = [0] * 100

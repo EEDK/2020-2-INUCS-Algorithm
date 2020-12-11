@@ -10,12 +10,13 @@ def initSkip(p):
 def BM(p, t, k):
     M = len(p)
     N = len(t)
-
     initSkip(p)
+
     i = k + M - 1
     j = M - 1
 
-    if i >= N: return N
+    if i >= N:
+        return N
     while j >= 0:
         while t[i] != p[j]:
             s = skip[index(t[i])]

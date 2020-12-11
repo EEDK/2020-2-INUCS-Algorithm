@@ -30,7 +30,7 @@ def KMP(pattern, text, k, m, n):
 
 next = [0] * 50
 text = 'ababababcababababcaabbabababcaab'
-pattern = 'abababca'
+pattern = 'cbacbaba'
 
 N = len(text)
 M = len(pattern)

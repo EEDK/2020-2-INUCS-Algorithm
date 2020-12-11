@@ -1,4 +1,4 @@
-import time, SearchAlgorithm.Search
+import time
 from random import *
 
 class node:
@@ -113,22 +113,22 @@ class Dict:
 
             print('key = %d , parent = %d' %(x.key, p.key))
 
-#
-# N = int(input("만들 배열의 갯수 설정 : "))
-#
-# key = list(range(1, N + 1))
-# shuffle(key)
-#
-# d = Dict()
-# for i in range(N):
-#     d.insert(key[i])
-# d.check(N)
-#
-# start_time = time.time()
-# s_key = randint(1, N + 1)
-# result = d.search(s_key)
-# if result == -1 or result != s_key:
-#     print('탐색 오류')
-# end_time = time.time() - start_time
-#
-# print('AVL 트리 탐색 수행 시간(N = %d) : %0.3f'%(N, end_time))
+
+N = int(input("만들 배열의 갯수 설정 : "))
+
+key = list(range(1, N + 1))
+shuffle(key)
+
+d = Dict()
+for i in range(N):
+    d.insert(key[i])
+d.check(N)
+
+start_time = time.time()
+s_key = randint(1, N + 1)
+result = d.search(s_key)
+if result == -1 or result != s_key:
+    print('탐색 오류')
+end_time = time.time() - start_time
+
+print('AVL 트리 탐색 수행 시간(N = %d) : %0.3f'%(N, end_time))

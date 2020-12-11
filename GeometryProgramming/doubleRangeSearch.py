@@ -87,7 +87,7 @@ class Range:
         return count
 
 
-N = 16
+N = 8
 r = Range()
 t_range = rect()
 p = []
@@ -98,9 +98,10 @@ for i in range(N):
     r.insert(p[i])
 
 t_range.x1 = 7
-t_range.x2 = 11
-t_range.y1 = 10
-t_range.y2 = 16
+t_range.y1 = 13
+
+t_range.x2 = 9
+t_range.y2 = 17
 
 result = r.search(t_range)
 print('점 개수 : ', result)

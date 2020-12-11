@@ -105,3 +105,20 @@ class Dict():
                 return()
 
             print('key = %d , parent %d' % (x.key.get(), p.key.get()))
+
+
+import random, time
+N = 2
+key = [13, 22]
+sKey = [13, 22]
+
+d = Dict()
+for i in range(N):
+    d.insert(key[i])
+
+for i in range(N):
+    result = d.search(sKey[i])
+    if result.get() == -1 or result.get() != sKey[i]:
+        print('탐색 오류')
+
+d.check(sKey)

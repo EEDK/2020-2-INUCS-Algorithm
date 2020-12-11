@@ -27,13 +27,13 @@ def printMatrix(matrix):
     for i in range(1, col):
         row = len(matrix[i])
         for j in range(1, row):
-            print('%.1f' % matrix[i][j], end=' ')
+            print('%.2f' % matrix[i][j], end=' ')
         print()
 
 import sys
 
-N = 4
-P = [0.0, 0.3, 0.2, 0.4, 0.1]
+N = 5
+P = [0, 0.26, 0.17, 0.29, 0.15, 0.13]
 A = []
 R = []
 
@@ -49,7 +49,7 @@ for i in range(N + 2):
     R.append(r)
 
 result = optimalBST(P, A, R, N)
-print('최적 이진 탐색 트리의 최솟값 : %.1f' %result)
+print('최적 이진 탐색 트리의 최솟값 : %.2f' %result)
 print('A')
 printMatrix(A)
 print()
