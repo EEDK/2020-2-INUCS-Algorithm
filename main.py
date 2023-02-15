@@ -8,6 +8,8 @@ def SelectSort(a, n):
                 a[j], a[minIndex] = a[minIndex], a[j]
 
 # 버블 정렬
+
+
 def bubbleSort(a, n):
     for i in range(n, 1, -1):
         for j in range(1, i, 1):
@@ -15,6 +17,8 @@ def bubbleSort(a, n):
                 a[j+1], a[j] = a[j], a[j+1]
 
 # 삽입 정렬
+
+
 def insertSort(a, n):
     for i in range(2, n+1, 1):
         v = a[i]
