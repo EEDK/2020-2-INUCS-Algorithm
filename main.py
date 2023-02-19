@@ -29,7 +29,14 @@ def insertSort(a, n):
         a[j] = v
 
 
+def solution(a, b):
+    return a + b
+
+
 if __name__ == '__main__':
-    a = [-1, 4, 3, 2, 1, 5]
-    insertSort(a, 4)
-    print(a)
+    while True:
+        a, b = map(int, input().split())
+        if (a == 0 and b == 0):
+            break
+        else:
+            print(solution(a, b))
