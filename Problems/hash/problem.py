@@ -20,5 +20,11 @@ def solution(nums):
     return answer
 
 
+# hash는 set을 이용하는것이 키포인트
+def bestSolution(nums):
+    print(set(nums))
+    return min(len(nums)/2, len(set(nums)))
+
+
 a = [3, 1, 2, 3]
-print(solution(a))
+print(bestSolution(a))
