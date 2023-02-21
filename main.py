@@ -1,42 +1,22 @@
 
-# 선택 정렬
-def SelectSort(a, n):
-    for i in range(n):
-        minIndex = i
-        for j in range(i+1, n+1, 1):
-            if a[j] < a[minIndex]:
-                a[j], a[minIndex] = a[minIndex], a[j]
+def solution(a, b, c):
 
-# 버블 정렬
+    sumAmount = a + b + c
 
+    if (sumAmount - max(a, b, c) <= sumAmount / 2):
+        return "Invalid"
 
-def bubbleSort(a, n):
-    for i in range(n, 1, -1):
-        for j in range(1, i, 1):
-            if a[j] > a[j+1]:
-                a[j+1], a[j] = a[j], a[j+1]
-
-# 삽입 정렬
+    if (a == b and a == c):
+        return "Equilateral"
+    elif (a == b or a == c or b == c):
+        return "Isosceles"
+    else:
+        return "Scalene"
 
 
-def insertSort(a, n):
-    for i in range(2, n+1, 1):
-        v = a[i]
-        j = i
-        while j > 1 and a[j-1] > v:
-            a[j] = a[j-1]
-            j -= 1
-        a[j] = v
+while True:
+    a, b, c = map(int, input().split())
+    if (a == 0 and b == 0 and c == 0):
+        break
 
-
-def solution(a, b):
-    return a + b
-
-
-if __name__ == '__main__':
-    while True:
-        a, b = map(int, input().split())
-        if (a == 0 and b == 0):
-            break
-        else:
-            print(solution(a, b))
+    print(solution(a, b, c))
