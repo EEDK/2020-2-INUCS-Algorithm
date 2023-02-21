@@ -1,5 +1,6 @@
 import SortAlgorithm.Tool
 
+
 def SelectSort(a, n):
     for i in range(1, n):
         minIndex = i
@@ -7,11 +8,13 @@ def SelectSort(a, n):
             if a[j] < a[minIndex]:
                 a[j], a[minIndex] = a[minIndex], a[j]
 
+
 def bubbleSort(a, n):
     for i in range(n, 1, -1):
         for j in range(1, i, 1):
             if a[j] > a[j+1]:
                 a[j+1], a[j] = a[j], a[j+1]
+
 
 def insertSort(a, n):
     for i in range(2, n+1, 1):
@@ -21,6 +24,7 @@ def insertSort(a, n):
             a[j] = a[j-1]
             j -= 1
         a[j] = v
+
 
 def shellSort(a, n):
     h = 1
@@ -37,11 +41,13 @@ def shellSort(a, n):
             a[j] = v
         h = int(h / 3)
 
+
 def quickSort(a, l, r):
     if r > l:
         i = SortAlgorithm.Tool.partition(a, l, r)
         quickSort(a, l, i-1)
         quickSort(a, i+1, r)
+
 
 def heapSort(a, n):
     i = int(n/2)
@@ -53,6 +59,7 @@ def heapSort(a, n):
         a[1], a[i+1] = a[i+1], a[1]
         SortAlgorithm.Tool.heapify(a, 1, i)
         i -= 1
+
 
 def countingSort(a, n, m):
     count = [0] * (m+1)
@@ -70,6 +77,7 @@ def countingSort(a, n, m):
     for i in range(1, n+1, 1):
         a[i] = b[i]
 
+
 def radixSort(arr, n, m):
     Q = []
     for i in range(10):
@@ -85,11 +93,13 @@ def radixSort(arr, n, m):
                 p += 1
                 arr[p] = SortAlgorithm.Tool.dequeue(Q[i])
 
+
 def exchangeSort(a, n):
     for i in range(1, n+1):
         for j in range(i+1, n+1):
             if a[j] < a[i]:
                 a[j], a[i] = a[i], a[j]
+
 
 def cocktailSort(a, n):
     swapped = True
@@ -112,6 +122,7 @@ def cocktailSort(a, n):
                 a[i], a[i + 1] = a[i + 1], a[i]
                 swapped = True
         start = start + 1
+
 
 def merge(a, l, m, r):
     i = l
@@ -140,12 +151,14 @@ def merge(a, l, m, r):
     for p in range(l, r + 1, 1):
         a[p] = b[p]
 
+
 def mergeSort(a, l, r):
     if r > l:
         m = int((r+l) / 2)
         mergeSort(a, l, m)
         mergeSort(a, m + 1, r)
         merge(a, l, m, r)
+
 
 def naturalMergeSort(a):
     run = SortAlgorithm.Tool.chopingRun(a, n)
@@ -159,6 +172,7 @@ def naturalMergeSort(a):
             l = r + 1
         run = SortAlgorithm.Tool.chopingRun(a, n)
         length = len(run)
+
 
 def tournamentSort(a, n):
     newA = a.copy()
