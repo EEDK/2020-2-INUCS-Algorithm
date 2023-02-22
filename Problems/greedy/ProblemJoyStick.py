@@ -3,10 +3,11 @@
 # - 조이스틱을 왼쪽으로 1번 조작하여 커서를 마지막 문자 위치로 이동시킵니다.
 # - 마지막 위치에서 조이스틱을 아래로 1번 조작하여 Z를 완성합니다.
 # 따라서 11번 이동시켜 "JAZ"를 만들 수 있고, 이때가 최소 이동입니다.
+# 방향의 관점 잘 봐야할듯?
 
 # 채점 결과
-# 정확성: 48.1
-# 합계: 48.1 / 100.0
+# 정확성: 55.6
+# 합계: 55.6 / 100.0
 
 def solution(name):
     answer = 0
@@ -15,6 +16,9 @@ def solution(name):
     nowName = ''
     for i in range(len(name)):
         nowName += 'A'
+
+    if nowName == name:
+        return 0
 
     # 왼쪽에 A가 더많나, 오른쪽에 A가 더많나 판단
     countLeft = 0
@@ -29,7 +33,6 @@ def solution(name):
 
     pos = 0
     while nowName != name:
-
         # 조이스틱 로직 구현
         if (ord(name[pos]) - ord(nowName[pos]) > 12):
             answer += (26 - (ord(name[pos]) - ord(nowName[pos])))
@@ -39,10 +42,10 @@ def solution(name):
 
         if countLeft > countRight:
             pos -= 1
-            answer += 1
         else:
             pos += 1
-            answer += 1
+
+        answer += 1
 
     return answer - 1
 
@@ -54,8 +57,3 @@ def nameSwap(S, targetPos, Char):
         targetPos = len(S) + targetPos
     new_S = S[:targetPos] + Char + S[targetPos+1:]
     return new_S
-
-
-# JAEWRFDAAAZ
-name = "JAN"
-print(solution(name))
