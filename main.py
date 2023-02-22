@@ -34,3 +34,4 @@ def solution(x, y, n):
 
 x, y, n = 10, 40, 5
 print(solution(x, y, n))
+# 2
