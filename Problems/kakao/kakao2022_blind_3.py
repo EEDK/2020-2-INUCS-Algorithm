@@ -7,7 +7,6 @@ import functools
 
 
 def comparator(a, b):
-
     atime, acarId, aaction = a.split()
     btime, bcarId, baction = b.split()
 
@@ -19,12 +18,35 @@ def solution(fees, records):
     records = sorted(records, key=functools.cmp_to_key(
         comparator))
 
-    print(records)
+    answer = []
+    feeDB = {}
+
+    preTime, preID, preAction = records[0].split()
 
     for i in range(len(records)):
         time, carId, action = records[i].split()
 
-    answer = []
+        if carId not in feeDB:
+            feeDB[carId] = 0
+
+        if len(records) == 1:
+            answer.append(calcFee(fees, calcTimegap(start=time, end="23:59")))
+            return answer
+        if preID != carId:
+            if preAction == 'IN':
+                feeDB[preID] += calcTimegap(start=preTime, end="23:59")
+
+        else:
+            if action == 'OUT':
+                feeDB[preID] += calcTimegap(start=preTime, end=time)
+
+        if i == len(records) - 1 and preID == carId and preAction == 'OUT' and action == 'IN':
+            feeDB[preID] += calcTimegap(start=time, end="23:59")
+
+        preTime, preID, preAction = time, carId, action
+
+    for key, value in feeDB.items():
+        answer.append(calcFee(fees, value))
 
     return answer
 
@@ -40,12 +62,9 @@ def calcFee(fees, timeGap):
 def calcTimegap(start, end):
     startHour, startMinute = start.split(':')
     endHour, endMinute = end.split(':')
-    return int(endHour) * 60 + int(endMinute) - \
-        (int(startHour) * 60 + int(startMinute))
+    return int(endHour) * 60 + int(endMinute) - (int(startHour) * 60 + int(startMinute))
 
 
-fees = [180, 5000, 10, 600]
-records = ["05:34 5961 IN", "06:00 0000 IN", "06:34 0000 OUT", "07:59 5961 OUT",
-           "07:59 0148 IN", "18:59 0000 IN", "19:09 0148 OUT", "22:59 5961 IN", "23:00 5961 OUT"]
-
+fees = [1, 461, 1, 10]
+records = ["00:00 1234 IN"]
 print(solution(fees, records))
