@@ -12,8 +12,20 @@ ex) 12, 21의 최소 공배수를 구하는법
 """
 
 
+def gcd(a, b):  # 최대공약수를 구하는 함수
+    while b > 0:
+        a, b = b, a % b
+    return a
+
+
+def lcm(a, b):  # 최소공배수를 구하는 함수
+    return a * b // gcd(a, b)
+
+
 def solution(arr):
-    answer = 0
+    answer = arr[0]
+    for i in range(1, len(arr)):
+        answer = lcm(answer, arr[i])
     return answer
 
 
