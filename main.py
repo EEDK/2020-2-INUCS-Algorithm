@@ -1,10 +1,9 @@
-def solution(s):
-    answer = 0
+def dfs()
 
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
 
+def solution(tickets):
+    answer = []
     return answer
 
 
-solution("abcdcba")
+print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]))
